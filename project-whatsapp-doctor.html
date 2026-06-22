@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Doctor Appointment Bot | Case Study</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            themePrimary: 'var(--primary)',
+            themeSecondary: 'var(--secondary)',
+            themeBgDark: 'var(--bg-dark)',
+            themeBgCard: 'var(--bg-card)',
+            themeMuted: 'var(--text-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      z-index: 10000;
+      width: 0%;
+      box-shadow: 0 0 10px var(--primary-glow);
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body class="selection:bg-opacity-30 selection:text-white overflow-x-hidden min-h-screen">
+
+  <!-- Interactive Mouse Spotlight -->
+  <div class="spotlight"></div>
+  
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Background Glow Orb -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div class="glow-spot top-[-100px] left-[-100px]"></div>
+  </div>
+
+  <!-- MINIMAL NAVBAR -->
+  <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-50">
+    <a href="index.html#projects" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors font-medium group text-sm tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Portfolio
+    </a>
+  </nav>
+
+  <!-- CASE STUDY HERO -->
+  <header class="pt-32 pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center relative z-10">
+    <span class="btn-pill inline-block mb-6">Conversational AI</span>
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+      AI WhatsApp Appointment Bot
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl mx-auto leading-relaxed font-light">
+      A production-grade conversational AI assistant automating patient appointment schedules, slot queries, and cancellations via Meta's Business API.
+    </p>
+  </header>
+
+  <!-- CASE STUDY DASHBOARD IMAGE -->
+  <section class="px-6 md:px-12 pb-20 max-w-5xl mx-auto reveal-item">
+    <div class="relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f14] aspect-video flex items-center justify-center shadow-2xl">
+      <img src="./images/whatsapp_bot.png" alt="WhatsApp Appointment Bot Dashboard" class="w-full h-full object-cover opacity-80" onerror="this.src='https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=1200'">
+    </div>
+  </section>
+
+  <!-- QUICK STATS BAR -->
+  <section class="border-y border-white/5 bg-[#0f0f14]/50 backdrop-blur-md py-10 mb-20 relative z-10">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5 text-center">
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Role</h4>
+        <p class="text-base font-bold text-white">Full-Stack Agent Dev</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Timeline</h4>
+        <p class="text-base font-bold text-white">2.5 Weeks</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Core Stack</h4>
+        <p class="text-base font-bold text-[var(--primary)]">n8n, Meta API, Redis</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Efficiency</h4>
+        <p class="text-base font-bold text-green-400">70%+ Booking automated</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY DETAILS -->
+  <article class="max-w-4xl mx-auto px-6 md:px-12 space-y-20 pb-32 relative z-10">
+    
+    <!-- 01: Context -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">01</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Context & Objective</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          Medical clinics and support centers dedicate massive operational hours to manual scheduling: booking slots, rescheduling visits, processing cancellation requests, and sending reminders.
+        </p>
+        <p>
+          The objective was to deploy a conversational booking assistant on WhatsApp. It needed to extract intent contextually, verify doctor availability in real-time, write details to scheduling backends, and maintain conversation state cleanly over multi-turn dialogues.
+        </p>
+      </div>
+    </div>
+
+    <!-- 02: Constraints & Design -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">02</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Technical Design</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <ul class="space-y-6">
+          <li class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-cyan-400">
+              ⚡
+            </div>
+            <div>
+              <strong class="text-white block mb-1">State & Session Management</strong>
+              <span class="text-sm">WhatsApp messaging triggers single stateless webhooks. To coordinate booking parameters across several turns (e.g. date -> doctor -> time slot), we implemented a <code class="text-[var(--primary)]">Redis caching layer</code> to preserve transient booking contexts indexed by user phone numbers.</span>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-purple-400">
+              📊
+            </div>
+            <div>
+              <strong class="text-white block mb-1">Entity Extraction & Validation</strong>
+              <span class="text-sm">Patients describe timing preferences dynamically (e.g., "next Tuesday after 3 PM"). We structured LLM parsing blocks to translate loose conversations into strict JSON schemas, matching slot constraints before writing entries.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03: Architecture -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">03</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Workflow Architecture</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          The setup relies on a clean, message-driven pipeline built on n8n workflows:
+        </p>
+        <div class="bg-[#0f0f14] border border-white/5 p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">1</span>
+            <span class="text-white font-semibold text-sm">Meta Webhook Trigger</span>
+            <span class="text-xs text-[var(--text-muted)]">Pushes patient WhatsApp text to n8n webhook.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">2</span>
+            <span class="text-white font-semibold text-sm">Session Context Check</span>
+            <span class="text-xs text-[var(--text-muted)]">Pulls state cache from Redis to retrieve active booking properties.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">3</span>
+            <span class="text-white font-semibold text-sm">LLM Entity Extractor</span>
+            <span class="text-xs text-[var(--text-muted)]">Extracts doctor specialties and preferred dates into structured slots.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">4</span>
+            <span class="text-white font-semibold text-sm">Schedule Verification & Sync</span>
+            <span class="text-xs text-[var(--text-muted)]">Queries slot sheets, updates bookings, clears Redis, and responds to WhatsApp.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: Results -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">04</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Key Metrics</h3>
+      </div>
+      <div class="md:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="glass-card p-6">
+            <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-bold">Manual Hours Saved</h4>
+            <span class="text-3xl font-extrabold text-white block mb-1">70%+ Saved</span>
+            <p class="text-xs text-[var(--text-muted)]">Drastically reduced direct receptionist time spent scheduling and rescheduling.</p>
+          </div>
+          <div class="glass-card p-6">
+            <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-bold">Booking Integrity</h4>
+            <span class="text-3xl font-extrabold text-green-400 block mb-1">0 Overlaps</span>
+            <p class="text-xs text-[var(--text-muted)]">Real-time sheet lock validation prevents slot overlaps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-[#08080c] py-16 text-center relative z-10">
+    <div class="max-w-3xl mx-auto px-6">
+      <h3 class="text-2xl font-bold text-white mb-6">Explore more case studies</h3>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="index.html#projects" class="btn-secondary w-full sm:w-auto text-center">Back to Home</a>
+        <a href="project-tcs-chatbot.html" class="btn-primary w-full sm:w-auto text-center">Next Project</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for local page loading and spotlight setup -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch and apply theme from parent index page preference
+      const savedTheme = localStorage.getItem('portfolio-theme') || 'purple';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // Spotlight coordinate tracker
+      document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+      });
+
+      // Reading progress bar length updater
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+      });
+
+      // Intersection Observer for scroll elements
+      const revealItems = document.querySelectorAll('.reveal-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealItems.forEach(item => observer.observe(item));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="purple">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akhila Boppudi | AI & Agentic Automation Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Akhila Boppudi - AI Engineer specializing in LangGraph, RAG architectures, multi-agent workflows, and intelligent automation.">
+  
+  <!-- Tailwind CSS CDN for utility-based layout grid -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            themePrimary: 'var(--primary)',
+            themeSecondary: 'var(--secondary)',
+            themeBgDark: 'var(--bg-dark)',
+            themeBgCard: 'var(--bg-card)',
+            themeMuted: 'var(--text-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="selection:bg-opacity-30 selection:text-white overflow-x-hidden min-h-screen">
+
+  <!-- Interactive Mouse Spotlight -->
+  <div class="spotlight"></div>
+  
+  <!-- Background Glow Orbs -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div class="glow-spot top-[-100px] left-[-100px]"></div>
+    <div class="glow-spot bottom-[-100px] right-[-100px]" style="animation-delay: 5s;"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-5 px-6 md:px-12 flex justify-between items-center border-b border-transparent backdrop-blur-md bg-opacity-70">
+    <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+      <h1 class="text-2xl font-bold tracking-tight text-white hover:opacity-80 transition-opacity">
+        Akhila<span class="text-[var(--primary)] font-extrabold">.</span>
+      </h1>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--text-muted)]">
+      <a href="#about" class="hover:text-white transition-colors relative group py-1">
+        About
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[var(--primary)] transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#projects" class="hover:text-white transition-colors relative group py-1">
+        Projects
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[var(--primary)] transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#experience" class="hover:text-white transition-colors relative group py-1">
+        Timeline
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[var(--primary)] transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#skills" class="hover:text-white transition-colors relative group py-1">
+        Skills
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[var(--primary)] transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#contact" class="hover:text-white transition-colors relative group py-1">
+        Contact
+        <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-[var(--primary)] transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </div>
+
+    <!-- Theme Switcher & Mobile Menu Trigger -->
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher Control Panel -->
+      <div class="flex items-center gap-2 bg-[#14141d]/80 border border-white/5 px-3 py-1.5 rounded-full backdrop-blur-md">
+        <button onclick="setTheme('purple')" class="theme-dot w-4 h-4 rounded-full bg-[#9d7cff] border border-transparent active" title="Cyber Purple" id="theme-btn-purple"></button>
+        <button onclick="setTheme('mint')" class="theme-dot w-4 h-4 rounded-full bg-[#10b981] border border-transparent" title="Emerald Mint" id="theme-btn-mint"></button>
+        <button onclick="setTheme('ocean')" class="theme-dot w-4 h-4 rounded-full bg-[#0ea5e9] border border-transparent" title="Ocean Breeze" id="theme-btn-ocean"></button>
+        <button onclick="setTheme('amber')" class="theme-dot w-4 h-4 rounded-full bg-[#f59e0b] border border-transparent" title="Amber Sunset" id="theme-btn-amber"></button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-menu" class="fixed inset-x-0 top-0 bg-[#060608]/95 backdrop-blur-2xl border-b border-white/10 z-40 flex flex-col items-center justify-center pt-24 pb-10 gap-6 transform -translate-y-full transition-transform duration-500 ease-in-out">
+    <a href="#about" class="text-lg font-medium hover:text-[var(--primary)] transition-colors mobile-link">About</a>
+    <a href="#projects" class="text-lg font-medium hover:text-[var(--primary)] transition-colors mobile-link">Projects</a>
+    <a href="#experience" class="text-lg font-medium hover:text-[var(--primary)] transition-colors mobile-link">Timeline</a>
+    <a href="#skills" class="text-lg font-medium hover:text-[var(--primary)] transition-colors mobile-link">Skills</a>
+    <a href="#contact" class="text-lg font-medium hover:text-[var(--primary)] transition-colors mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="min-h-screen px-6 md:px-12 relative flex items-center justify-center overflow-hidden pt-20">
+    <!-- Interactive Node/Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+      <!-- Intro Text Column -->
+      <div class="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5 mb-6 float-effect">
+          <span class="w-2 h-2 rounded-full bg-[var(--primary)] animate-ping"></span>
+          <span class="text-xs font-semibold tracking-wider uppercase text-gray-200">Open to opportunities</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.1] tracking-tight mb-4 text-white">
+          Hi, I'm <span class="text-[var(--primary)]">Akhila Boppudi</span>
+        </h1>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-200 mb-6 flex justify-center lg:justify-start items-center gap-2 min-h-[40px]">
+          <span class="typewrite" data-period="1500" data-type='["AI Engineer", "AI Automation Specialist", "Agentic Architect", "Conversational AI Developer"]'>
+            <span class="wrap"></span>
+          </span>
+        </h2>
+
+        <p class="text-base md:text-lg text-[var(--text-muted)] max-w-xl mx-auto lg:mx-0 mb-8 font-light leading-relaxed">
+          Specializing in building autonomous LLM agents, multi-agent architectures (LangGraph), vector-based RAG engines, and workflow automation in Python. Proven track record in orchestrating secure cognitive layers that cut manual overhead by 70%+.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a href="#contact" class="btn-primary w-full sm:w-auto text-center">
+            Get in Touch
+          </a>
+          <a href="./Resume/akhila_boppudi_resume.pdf" download="akhila_boppudi_resume.pdf" class="btn-secondary w-full sm:w-auto text-center flex items-center justify-center gap-2">
+            Download Resume
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- visual Avatar/Graphic Column -->
+      <div class="lg:col-span-5 flex justify-center order-1 lg:order-2">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <!-- Outer glowing rings -->
+          <div class="absolute inset-0 rounded-full border border-[var(--primary)] opacity-20 animate-[spin_20s_linear_infinite]"></div>
+          <div class="absolute inset-4 rounded-full border border-dashed border-[var(--secondary)] opacity-10 animate-[spin_10s_linear_infinite_reverse]"></div>
+          <div class="absolute inset-[-10px] bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-full blur-2xl opacity-10 animate-pulse"></div>
+
+          <!-- Glassmorphic Image Container -->
+          <div class="absolute inset-6 rounded-full overflow-hidden border border-white/10 bg-[#0f0f14]/80 backdrop-blur-xl shadow-2xl flex items-center justify-center">
+            <!-- Modern fallback avatar SVG -->
+            <svg class="absolute w-2/3 h-2/3 text-[var(--primary)] opacity-10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <img src="./images/profile2.jpg" alt="Akhila Boppudi" class="w-full h-full object-cover relative z-10 transition-transform duration-700 hover:scale-110" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left: Text content -->
+      <div class="lg:col-span-7 reveal-item">
+        <h2 class="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-2">About Me</h2>
+        <h3 class="text-3xl md:text-5xl font-extrabold mb-6 text-white leading-tight">
+          Engineering Intelligent <br><span class="text-[var(--primary)]">Agentic Workflows</span>
+        </h3>
+        <p class="text-[var(--text-muted)] text-base md:text-lg mb-6 leading-relaxed font-light">
+          I am an AI Engineer specializing in intelligent automation. With hands-on expertise building LLM agents, multi-agent frameworks (LangGraph), vector databases (FAISS), and workflow automation in Python, I bridge the gap between cognitive models and robust production-ready systems.
+        </p>
+        <p class="text-[var(--text-muted)] text-base md:text-lg mb-8 leading-relaxed font-light">
+          At Tata Consultancy Services (TCS), I develop internal customer support systems, reducing manual lookup times by up to 80% through structured context retrieval (RAG) and optimized prompt engineering.
+        </p>
+        
+        <div class="flex items-center gap-4">
+          <a href="#projects" class="btn-primary">View My Projects</a>
+        </div>
+      </div>
+
+      <!-- Right: Bento metric boxes -->
+      <div class="lg:col-span-5 grid grid-cols-2 gap-4 reveal-item delay-200">
+        <!-- Box 1 -->
+        <div class="glass-card p-6 flex flex-col justify-between h-40">
+          <span class="text-3xl md:text-4xl font-extrabold text-[var(--primary)]">2+</span>
+          <div>
+            <h4 class="text-sm font-bold text-white mb-1">Years Experience</h4>
+            <p class="text-xs text-[var(--text-muted)]">AI & Software Eng.</p>
+          </div>
+        </div>
+        <!-- Box 2 -->
+        <div class="glass-card p-6 flex flex-col justify-between h-40">
+          <span class="text-3xl md:text-4xl font-extrabold text-green-400">70%+</span>
+          <div>
+            <h4 class="text-sm font-bold text-white mb-1">Manual Reduction</h4>
+            <p class="text-xs text-[var(--text-muted)]">Operations Automated</p>
+          </div>
+        </div>
+        <!-- Box 3 -->
+        <div class="glass-card p-6 flex flex-col justify-between h-40">
+          <span class="text-2xl md:text-3xl font-extrabold text-[var(--secondary)]">TCS Spot</span>
+          <div>
+            <h4 class="text-sm font-bold text-white mb-1">Innovation Award</h4>
+            <p class="text-xs text-[var(--text-muted)]">For AI-driven solutions</p>
+          </div>
+        </div>
+        <!-- Box 4 -->
+        <div class="glass-card p-6 flex flex-col justify-between h-40">
+          <span class="text-3xl md:text-4xl font-extrabold text-blue-400">10k+</span>
+          <div>
+            <h4 class="text-sm font-bold text-white mb-1">Daily Transactions</h4>
+            <p class="text-xs text-[var(--text-muted)]">Financial Pipelines</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION (BENTO GRID DESIGN) -->
+  <section id="projects" class="py-24 px-6 md:px-12 bg-[#0c0c10]/40 border-y border-white/5 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal-item">
+        <h2 class="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-2">Portfolio</h2>
+        <h3 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+          Featured <span class="text-[var(--primary)]">Projects & Cases</span>
+        </h3>
+        <p class="text-[var(--text-muted)] mt-4 max-w-xl mx-auto font-light">A showcase of production-grade agent systems, conversational LLM interfaces, and robust automation pipelines.</p>
+      </div>
+
+      <!-- Projects Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Project 1: Autonomous AI Job Hunter Agent (Large Bento Card - Left) -->
+        <div class="md:col-span-6 glass-card p-8 flex flex-col justify-between min-h-[500px] reveal-item float-effect">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="btn-pill">AI Agent & API System</span>
+              <span class="text-sm font-bold text-[var(--text-muted)]">PROJECT 01</span>
+            </div>
+            <h4 class="text-2xl md:text-3xl font-bold text-white mb-4 hover:text-[var(--primary)] transition-colors">
+              Autonomous AI Job Hunter Agent
+            </h4>
+            <p class="text-[var(--text-muted)] font-light leading-relaxed mb-6">
+              An autonomous system utilizing LangGraph, FastAPI, and n8n to fully automate ATS resume optimization and job tracking. Integrates a Gemini-2.5 agent to dynamically process real-world spreadsheet logs and incoming Gmail notifications. Features LinkedIn scraper ingestion and a local Qwen2.5-3B filtering layer to cut heavy LLM compute costs.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">LangGraph</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">FastAPI</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">n8n</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Gemini API</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Redis</span>
+            </div>
+          </div>
+          <div>
+            <div class="rounded-2xl overflow-hidden relative border border-white/5 mb-6 h-64 bg-slate-900 flex items-center justify-center">
+              <img src="./images/ai_job_companion.png" alt="AI Job Hunter dashboard" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+            </div>
+            <a href="project-ai-job-hunter.html" class="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[var(--primary)] transition-colors group">
+              Read Detailed Case Study
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: WhatsApp Doctor Appointment System (Tall Bento Card - Right) -->
+        <div class="md:col-span-6 glass-card p-8 flex flex-col justify-between min-h-[500px] reveal-item delay-100 float-effect" style="animation-delay: 1.5s;">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="btn-pill">Conversational AI</span>
+              <span class="text-sm font-bold text-[var(--text-muted)]">PROJECT 02</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-4 hover:text-[var(--primary)] transition-colors">
+              WhatsApp Appointment Bot
+            </h4>
+            <p class="text-[var(--text-muted)] font-light leading-relaxed mb-6">
+              A production conversational agent built using n8n and the Meta WhatsApp Business API. Orchestrates multi-turn clinical booking workflows and entity extraction into strict JSON schemas, fully automating appointment slots.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Meta API</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">n8n</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Redis</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Google Sheets</span>
+            </div>
+          </div>
+          <div>
+            <div class="rounded-2xl overflow-hidden relative border border-white/5 mb-6 h-64 bg-slate-900 flex items-center justify-center">
+              <img src="./images/whatsapp_bot.png" alt="WhatsApp Booking Bot Flow" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+            </div>
+            <a href="project-whatsapp-doctor.html" class="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[var(--primary)] transition-colors group">
+              View Case Study
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: TCS Support Chatbot (Bento Card - Left Bottom) -->
+        <div class="md:col-span-6 glass-card p-8 flex flex-col justify-between min-h-[400px] reveal-item float-effect" style="animation-delay: 0.75s;">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="btn-pill">Corporate AI RAG</span>
+              <span class="text-sm font-bold text-[var(--text-muted)]">PROJECT 03</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-4 hover:text-[var(--primary)] transition-colors">
+              TCS Internal Support Bot
+            </h4>
+            <p class="text-[var(--text-muted)] font-light leading-relaxed mb-6">
+              Designed and deployed a stateful customer support chatbot for TCS internal teams. Utilized vector searches (RAG) over structured SOP documents and FAQ logs to instantly resolve repetitive Tier-1 issues, cutting response latency by 80%.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">RAG</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Vector Store</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Prompt Eng.</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Python</span>
+            </div>
+          </div>
+          <a href="project-tcs-chatbot.html" class="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[var(--primary)] transition-colors group">
+            Read Case Study
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Project 4: Financial Pipelines (Bento Card - Right Bottom) -->
+        <div class="md:col-span-6 glass-card p-8 flex flex-col justify-between min-h-[400px] reveal-item delay-100 float-effect" style="animation-delay: 2.25s;">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="btn-pill">Data Pipelines</span>
+              <span class="text-sm font-bold text-[var(--text-muted)]">PROJECT 04</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-4 hover:text-[var(--primary)] transition-colors">
+              BaNCS Financial Pipelines
+            </h4>
+            <p class="text-[var(--text-muted)] font-light leading-relaxed mb-6">
+              Engineered high-throughput financial data pipelines within the TCS BaNCS software framework (handling trade capture, settlement processes, and corporate actions). Written in PL/SQL, maintaining a 99.9% data accuracy SLA across 10,000+ daily transactions.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">PL/SQL</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">SQL</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">BaNCS</span>
+              <span class="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-gray-300">Data Integrity</span>
+            </div>
+          </div>
+          <span class="text-xs font-semibold text-green-400 tracking-wide uppercase flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+            Production Core Engine
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE (EXPERIENCE & EDUCATION) -->
+  <section id="experience" class="py-24 px-6 md:px-12 max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-16 reveal-item">
+      <h2 class="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-2">Chronology</h2>
+      <h3 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Timeline & Milestones</h3>
+    </div>
+
+    <!-- Toggle Controls -->
+    <div class="flex justify-center mb-16 reveal-item">
+      <div class="bg-[#101017] border border-white/5 rounded-full p-1.5 flex items-center shadow-lg relative max-w-[340px] w-full">
+        <button id="tab-btn-exp" onclick="switchTimelineTab('experience')" class="w-1/2 px-6 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all bg-[#1c1c28] text-[var(--primary)] shadow">
+          Experience
+        </button>
+        <button id="tab-btn-edu" onclick="switchTimelineTab('education')" class="w-1/2 px-6 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all text-gray-400 hover:text-white">
+          Education
+        </button>
+      </div>
+    </div>
+
+    <!-- Timeline Tracks -->
+    <div class="relative">
+      <div class="timeline-line"></div>
+
+      <!-- Experience Panel Content -->
+      <div id="timeline-exp" class="tab-content active space-y-12">
+        
+        <!-- Experience Item 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center w-full group reveal-item relative z-10">
+          <div class="md:col-span-5 text-left md:text-right md:pr-8">
+            <h4 class="text-xl md:text-2xl font-bold text-white group-hover:text-[var(--primary)] transition-colors">AI Engineer</h4>
+            <p class="text-[var(--primary)] font-medium text-sm">Tata Consultancy Services (TCS)</p>
+          </div>
+          <div class="md:col-span-2 flex justify-start md:justify-center items-center">
+            <span class="px-4 py-1.5 rounded-full bg-white/5 border border-[var(--primary)] text-xs font-bold text-white relative z-10 group-hover:scale-110 transition-transform">
+              2024 - Pres.
+            </span>
+          </div>
+          <div class="md:col-span-5 md:pl-8 text-left">
+            <div class="glass-card p-6 bg-opacity-40">
+              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                Designing and piloting an internal AI support assistant using RAG structures and LLM interfaces, automating Tier-1 issue resolutions. Maintaining core PL/SQL transactional engines in the BaNCS framework.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education Panel Content -->
+      <div id="timeline-edu" class="tab-content space-y-12">
+        
+        <!-- Education Item 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center w-full group relative z-10">
+          <div class="md:col-span-5 text-left md:text-right md:pr-8">
+            <h4 class="text-xl md:text-2xl font-bold text-white group-hover:text-[var(--primary)] transition-colors">B.Tech, Information Science</h4>
+            <p class="text-[var(--primary)] font-medium text-sm">Basaveshwar Engineering College</p>
+          </div>
+          <div class="md:col-span-2 flex justify-start md:justify-center items-center">
+            <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white relative z-10">
+              2019 - 2023
+            </span>
+          </div>
+          <div class="md:col-span-5 md:pl-8 text-left">
+            <div class="glass-card p-6 bg-opacity-40">
+              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                Graduated with 8.3/10 GPA. Gained foundational training in data structures, algorithms, databases, computer networks, and basic machine learning.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS MATRIX SECTION -->
+  <section id="skills" class="py-24 px-6 md:px-12 bg-[#0c0c10]/40 border-t border-white/5 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal-item">
+        <h2 class="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-2">Expertise</h2>
+        <h3 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Skills & Tech Stack</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Skill Card 1: Agentic AI -->
+        <div class="glass-card p-8 reveal-item">
+          <div class="w-12 h-12 rounded-2xl bg-opacity-10 bg-[var(--primary)] flex items-center justify-center border border-white/5 mb-6 text-xl">
+            🤖
+          </div>
+          <h4 class="text-xl font-bold text-white mb-4">Agentic AI & Orchestration</h4>
+          <ul class="space-y-3 text-sm text-[var(--text-muted)]">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              LangGraph & Multi-agent nodes
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              LangChain Framework
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Prompt Engineering for LLMs
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              ReAct Cognitive Loops
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill Card 2: ML & NLP -->
+        <div class="glass-card p-8 reveal-item delay-100">
+          <div class="w-12 h-12 rounded-2xl bg-opacity-10 bg-[var(--primary)] flex items-center justify-center border border-white/5 mb-6 text-xl">
+            🧠
+          </div>
+          <h4 class="text-xl font-bold text-white mb-4">Machine Learning & RAG</h4>
+          <ul class="space-y-3 text-sm text-[var(--text-muted)]">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              RAG architectures over FAQs/SOPs
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Vector Databases (FAISS, Chroma)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Embeddings & Semantic Search
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Local LLMs execution (Qwen)
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill Card 3: Backend & Core -->
+        <div class="glass-card p-8 reveal-item delay-200">
+          <div class="w-12 h-12 rounded-2xl bg-opacity-10 bg-[var(--primary)] flex items-center justify-center border border-white/5 mb-6 text-xl">
+            💻
+          </div>
+          <h4 class="text-xl font-bold text-white mb-4">Core Software Engineering</h4>
+          <ul class="space-y-3 text-sm text-[var(--text-muted)]">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Python scripting & APIs (FastAPI)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              SQL & PL/SQL database programming
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              Redis caching & session management
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+              n8n workflow automation
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (ELEVATED FOOTER ISLAND) -->
+  <footer id="contact" class="py-24 px-6 md:px-12 bg-[#08080c] border-t border-white/5 relative z-10">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-xs font-bold tracking-widest text-[var(--primary)] uppercase mb-2 reveal-item">Let's Connect</h2>
+      <h3 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8 reveal-item">Contact Me</h3>
+      <p class="text-[var(--text-muted)] text-base md:text-lg mb-10 max-w-md mx-auto font-light reveal-item delay-100">
+        Interested in discussing automation pipelines, multi-agent frameworks, or corporate AI integrations? Reach out directly!
+      </p>
+
+      <!-- Copy Email Interactive Button -->
+      <div class="flex justify-center mb-16 reveal-item delay-200">
+        <button onclick="copyToClipboard('boppudiakhila@gmail.com')" class="relative px-8 py-4 rounded-full border border-white/10 bg-[#121218]/80 text-white font-bold tracking-wide hover:border-[var(--primary)] transition-all duration-300 flex items-center justify-center gap-3 group shadow-2xl hover:scale-105 active:scale-95">
+          <span id="copy-text">Copy boppudiakhila@gmail.com</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--primary)] group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Social & Messaging links -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm font-semibold max-w-2xl mx-auto mb-16 reveal-item delay-300">
+        <a href="https://linkedin.com" target="_blank" class="glass-card p-4 hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-2">
+          LinkedIn
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+        <a href="https://github.com" target="_blank" class="glass-card p-4 hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-2">
+          GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+        <a href="https://wa.me/918088132851" target="_blank" class="glass-card p-4 hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-2">
+          WhatsApp Chat
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+      </div>
+
+      <div class="border-t border-white/5 pt-8 text-xs text-[var(--text-muted)] flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p>&copy; 2026 Akhila Boppudi. All rights reserved.</p>
+        <p class="flex items-center gap-2">
+          Designed with ❤️ & intelligence
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script files -->
+  <script src="script.js"></script>
+</body>
+</html>

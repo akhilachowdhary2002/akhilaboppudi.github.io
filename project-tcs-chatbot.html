@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCS Support Chatbot & Data Pipelines | Case Study</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            themePrimary: 'var(--primary)',
+            themeSecondary: 'var(--secondary)',
+            themeBgDark: 'var(--bg-dark)',
+            themeBgCard: 'var(--bg-card)',
+            themeMuted: 'var(--text-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      z-index: 10000;
+      width: 0%;
+      box-shadow: 0 0 10px var(--primary-glow);
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body class="selection:bg-opacity-30 selection:text-white overflow-x-hidden min-h-screen">
+
+  <!-- Interactive Mouse Spotlight -->
+  <div class="spotlight"></div>
+  
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Background Glow Orb -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div class="glow-spot top-[-100px] left-[-100px]"></div>
+  </div>
+
+  <!-- MINIMAL NAVBAR -->
+  <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-50">
+    <a href="index.html#projects" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors font-medium group text-sm tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Portfolio
+    </a>
+  </nav>
+
+  <!-- CASE STUDY HERO -->
+  <header class="pt-32 pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center relative z-10">
+    <span class="btn-pill inline-block mb-6">TCS AI & Data Engineering</span>
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+      TCS Support Chatbot & Data Pipelines
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl mx-auto leading-relaxed font-light">
+      Deploying RAG-based search engines for automated knowledge retrieval, paired with highly secure, high-throughput PL/SQL financial processing pipelines.
+    </p>
+  </header>
+
+  <!-- CASE STUDY VISUAL PLACEHOLDER -->
+  <section class="px-6 md:px-12 pb-20 max-w-5xl mx-auto reveal-item">
+    <div class="relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f14] aspect-video flex flex-col items-center justify-center shadow-2xl p-8 text-center bg-gradient-to-br from-[#12121c] to-[#0a0a0f]">
+      <!-- Glowing Abstract Network Visual -->
+      <svg class="w-32 h-32 text-[var(--primary)] opacity-40 mb-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+      <span class="text-white font-bold text-lg mb-2">TCS Internal Support Bot & Financial Core Engine</span>
+      <span class="text-xs text-[var(--text-muted)] tracking-wider uppercase">Production Enterprise Solutions</span>
+    </div>
+  </section>
+
+  <!-- QUICK STATS BAR -->
+  <section class="border-y border-white/5 bg-[#0f0f14]/50 backdrop-blur-md py-10 mb-20 relative z-10">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5 text-center">
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Role</h4>
+        <p class="text-base font-bold text-white">AI / Data Engineer</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Timeline</h4>
+        <p class="text-base font-bold text-white">Apr 2024 - Present</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Stack</h4>
+        <p class="text-base font-bold text-[var(--primary)]">Python, RAG, PL/SQL</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Data Accuracy</h4>
+        <p class="text-base font-bold text-green-400">99.9% SLA Integrity</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY DETAILS -->
+  <article class="max-w-4xl mx-auto px-6 md:px-12 space-y-20 pb-32 relative z-10">
+    
+    <!-- 01: Context -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">01</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Enterprise Context</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          At Tata Consultancy Services, internal operations support teams deal with huge databases of Standard Operating Procedures (SOPs), manuals, and frequently asked queries to resolve incoming requests. Doing this manually creates critical delays.
+        </p>
+        <p>
+          Parallelly, core financial systems under the BaNCS product package process trade captures, clearing settlements, and corporate actions. These transaction pipelines require absolute database integrity, speed, and clean indexing to process thousands of trades daily.
+        </p>
+      </div>
+    </div>
+
+    <!-- 02: Chatbot Design -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">02</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">AI Chatbot Solution</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          We designed a stateful conversational chatbot utilizing <strong class="text-white font-medium">Retrieval-Augmented Generation (RAG)</strong> to parse internal corporate FAQ repositories.
+        </p>
+        <ul class="space-y-4 text-sm">
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2"></span>
+            <span>Created an ingestion pipeline that parses PDF SOP documents into structured markdown segments, indexing them in a vector database.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2"></span>
+            <span>Optimized prompts and added strict context guards, ensuring the assistant responds *only* using approved facts, avoiding hallucinations.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2"></span>
+            <span>Improved first-response turnaround time by roughly 80% for common Tier-1 queries.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03: Data Pipelines -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">03</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">High-Throughput Databases</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          On the database engineering front, we maintained and optimized critical trade capture and processing schemas:
+        </p>
+        <div class="glass-card p-6 space-y-3">
+          <strong class="text-white block">PL/SQL Optimization</strong>
+          <p class="text-sm">
+            Refactored massive SQL routines and package bodies to handle trade clearances and corporate actions. Configured proper indexing and transaction boundary definitions, maintaining 99.9% accuracy across 10,000+ transactions daily.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: Impact -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">04</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Impact & Recognition</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          Through successful chatbot piloting and database maintenance, the support bot successfully deflected a large portion of repetitive query tickets. This work contributed directly to achieving the **TCS Spot Award** for exceptional performance in developing AI-driven automation.
+        </p>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-[#08080c] py-16 text-center relative z-10">
+    <div class="max-w-3xl mx-auto px-6">
+      <h3 class="text-2xl font-bold text-white mb-6">Explore more case studies</h3>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="index.html#projects" class="btn-secondary w-full sm:w-auto text-center">Back to Home</a>
+        <a href="project-ai-job-hunter.html" class="btn-primary w-full sm:w-auto text-center">Previous Project</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for local page loading and spotlight setup -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch and apply theme from parent index page preference
+      const savedTheme = localStorage.getItem('portfolio-theme') || 'purple';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // Spotlight coordinate tracker
+      document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+      });
+
+      // Reading progress bar length updater
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+      });
+
+      // Intersection Observer for scroll elements
+      const revealItems = document.querySelectorAll('.reveal-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealItems.forEach(item => observer.observe(item));
+    });
+  </script>
+</body>
+</html>

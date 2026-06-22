@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous AI Job Hunter Agent | Case Study</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            themePrimary: 'var(--primary)',
+            themeSecondary: 'var(--secondary)',
+            themeBgDark: 'var(--bg-dark)',
+            themeBgCard: 'var(--bg-card)',
+            themeMuted: 'var(--text-muted)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      z-index: 10000;
+      width: 0%;
+      box-shadow: 0 0 10px var(--primary-glow);
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body class="selection:bg-opacity-30 selection:text-white overflow-x-hidden min-h-screen">
+
+  <!-- Interactive Mouse Spotlight -->
+  <div class="spotlight"></div>
+  
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Background Glow Orb -->
+  <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div class="glow-spot top-[-100px] left-[-100px]"></div>
+  </div>
+
+  <!-- MINIMAL NAVBAR -->
+  <nav class="flex justify-between items-center px-6 md:px-12 py-6 absolute w-full z-50">
+    <a href="index.html#projects" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors font-medium group text-sm tracking-wide">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Portfolio
+    </a>
+  </nav>
+
+  <!-- CASE STUDY HERO -->
+  <header class="pt-32 pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center relative z-10">
+    <span class="btn-pill inline-block mb-6">AI Agent System</span>
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+      Autonomous AI Job Hunter Agent
+    </h1>
+    <p class="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl mx-auto leading-relaxed font-light">
+      An autonomous system utilizing LangGraph, FastAPI, and n8n to crawl job boards, analyze alignment, rewrite resumes, and update application tracking sheets.
+    </p>
+  </header>
+
+  <!-- CASE STUDY DASHBOARD IMAGE -->
+  <section class="px-6 md:px-12 pb-20 max-w-5xl mx-auto reveal-item">
+    <div class="relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f14] aspect-video flex items-center justify-center shadow-2xl">
+      <img src="./images/ai_job_companion.png" alt="AI Job Hunter Dashboard Visual" class="w-full h-full object-cover opacity-80" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200'">
+    </div>
+  </section>
+
+  <!-- QUICK STATS BAR -->
+  <section class="border-y border-white/5 bg-[#0f0f14]/50 backdrop-blur-md py-10 mb-20 relative z-10">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5 text-center">
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Role</h4>
+        <p class="text-base font-bold text-white">Lead AI Architect</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Timeline</h4>
+        <p class="text-base font-bold text-white">3 Weeks</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Core Stack</h4>
+        <p class="text-base font-bold text-[var(--primary)]">LangGraph, Python, n8n</p>
+      </div>
+      <div>
+        <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-semibold">Efficiency</h4>
+        <p class="text-base font-bold text-green-400">80% Manual Reduction</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY DETAILS -->
+  <article class="max-w-4xl mx-auto px-6 md:px-12 space-y-20 pb-32 relative z-10">
+    
+    <!-- 01: Context -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">01</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Context & Objective</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          Managing the modern job search workflow involves a repetitive bottleneck: crawling listings daily, evaluating alignment with one's skills, modifying the resume to match core keywords without fabricating facts, writing cover letters, and tracking responses across sheets.
+        </p>
+        <p>
+          The objective was to create a fully autonomous closed-loop agent that does the heavy lifting: crawling jobs continuously, running local filtering to save compute costs, tailoring ATS-friendly resumes, and updating spreadsheets and emails in the background.
+        </p>
+      </div>
+    </div>
+
+    <!-- 02: Constraints & Design -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">02</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Challenges & Design</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <ul class="space-y-6">
+          <li class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-red-400">
+              ⚠️
+            </div>
+            <div>
+              <strong class="text-white block mb-1">API Computations & Cost</strong>
+              <span class="text-sm">Querying commercial LLMs for hundreds of job postings is financially unfeasible. We introduced a local <code class="text-[var(--primary)]">Qwen-2.5:3B</code> classifier node running in Ollama to pre-filter and reject low-match positions before sending high-fit listings to Gemini-2.5-Flash.</span>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-yellow-400">
+              🔒
+            </div>
+            <div>
+              <strong class="text-white block mb-1">Anti-Hallucination Safe Locks</strong>
+              <span class="text-sm">Tailored resumes must remain 100% truthful. By structuring Gemini outputs to select and align *only* valid elements matching the input profile schema, we successfully blocked hallucinated details.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03: Architecture -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">03</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">The Pipeline Architecture</h3>
+      </div>
+      <div class="md:col-span-8 space-y-6 text-[var(--text-muted)] text-base md:text-lg leading-relaxed font-light">
+        <p>
+          The system uses state-managed loops in <strong class="text-white font-medium">LangGraph</strong> to coordinate the workflow stages:
+        </p>
+        <div class="bg-[#0f0f14] border border-white/5 p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">1</span>
+            <span class="text-white font-semibold text-sm">Crawl Stage</span>
+            <span class="text-xs text-[var(--text-muted)]">Apify scrapes LinkedIn listings into an intake queue.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">2</span>
+            <span class="text-white font-semibold text-sm">Cost-Saving Filter</span>
+            <span class="text-xs text-[var(--text-muted)]">Local Qwen-2.5-3B filters out misaligned matches (e.g. Senior Roles, different tech).</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">3</span>
+            <span class="text-white font-semibold text-sm">Resume Tailoring Engine</span>
+            <span class="text-xs text-[var(--text-muted)]">Gemini dynamically updates JSON schema representing candidate resume highlights.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-[var(--primary)] text-white text-xs font-bold flex items-center justify-center">4</span>
+            <span class="text-white font-semibold text-sm">Publishing Node</span>
+            <span class="text-xs text-[var(--text-muted)]">Converts HTML templates to PDF via Gutenberg, saves to Google Drive, and notifies.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: Results -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 reveal-item">
+      <div class="md:col-span-4">
+        <h2 class="text-transparent bg-clip-text bg-gradient-to-b from-[var(--primary)] to-transparent text-6xl font-black opacity-30 mb-2">04</h2>
+        <h3 class="text-2xl font-bold text-white tracking-tight">Key Metrics</h3>
+      </div>
+      <div class="md:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="glass-card p-6">
+            <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-bold">Time per Application</h4>
+            <span class="text-3xl font-extrabold text-white block mb-1">~2 Minutes</span>
+            <p class="text-xs text-[var(--text-muted)]">Down from 45 minutes of manual resume keywords tuning.</p>
+          </div>
+          <div class="glass-card p-6">
+            <h4 class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-bold">Compute API Savings</h4>
+            <span class="text-3xl font-extrabold text-green-400 block mb-1">65% Off</span>
+            <p class="text-xs text-[var(--text-muted)]">Through intelligent local pre-filtering nodes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-[#08080c] py-16 text-center relative z-10">
+    <div class="max-w-3xl mx-auto px-6">
+      <h3 class="text-2xl font-bold text-white mb-6">Explore more case studies</h3>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="index.html#projects" class="btn-secondary w-full sm:w-auto text-center">Back to Home</a>
+        <a href="project-whatsapp-doctor.html" class="btn-primary w-full sm:w-auto text-center">Next Project</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for local page loading and spotlight setup -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch and apply theme from parent index page preference
+      const savedTheme = localStorage.getItem('portfolio-theme') || 'purple';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      // Spotlight coordinate tracker
+      document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+      });
+
+      // Reading progress bar length updater
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+      });
+
+      // Intersection Observer for scroll elements
+      const revealItems = document.querySelectorAll('.reveal-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealItems.forEach(item => observer.observe(item));
+    });
+  </script>
+</body>
+</html>
